@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Bday Video - Barbie Theme</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: #ffc0cb; /* Barbie pink */
+    margin: 0;
+    padding: 2rem;
+    text-align: center;
+    color: #b0005a; /* darker pink */
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 5px #fff6f9;
+  }
+  #video-frame {
+    width: 80%;
+    max-width: 720px;
+    height: 405px; /* 16:9 aspect ratio */
+    margin: 0 auto;
+    border: 6px solid #ff66b2;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(255, 102, 178, 0.7);
+    overflow: hidden;
+    animation: funnyShake 1.5s infinite ease-in-out;
+    background-color: #000;
+    position: relative;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  #nav {
+    margin-top: 3rem;
+  }
+  #nav a {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #b0005a;
+    border: 2px solid #b0005a;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  #nav a:hover {
+    background-color: #b0005a;
+    color: white;
+  }
+
+  @keyframes funnyShake {
+    0%, 100% {
+      transform: translateX(0) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-8px) rotate(-5deg);
+    }
+    50% {
+      transform: translateX(8px) rotate(5deg);
+    }
+    75% {
+      transform: translateX(-8px) rotate(-5deg);
+    }
+  }
+
+  p#note {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #661143;
+  }
+</style>
+</head>
+<body>
+  <h1>Here is a special video for you!</h1>
+  <div id="video-frame">
+    <!-- Replace with your desired video URL -->
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen title="Birthday Video"></iframe>
+  </div>
+  <p id="note">Enjoy the surprise video! (You can replace the video URL in the code)</p>
+  <div id="nav">
+    <a href="index.html">&lt; Go Back to Happy Bday Page</a>
+  </div>
+</body>
+</html>

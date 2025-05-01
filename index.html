@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Bday Letter - Farah Allisyah Firanti^^</title>
+<style>
+  /* Basic resets and body styling */
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: #ffe6f0;
+    text-align: center;
+    padding: 2rem;
+    color: #d6336c;
+  }
+
+  /* Container for everything */
+  #container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Envelope styling */
+  #envelope {
+    width: 220px;
+    height: 160px;
+    background: #ff5c8d;
+    border-radius: 15px 15px 5px 5px;
+    position: relative;
+    margin: 2rem auto;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #b43a57;
+    transition: height 1s ease;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* The flap */
+  #envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 80px 110px 0 110px;
+    border-color: #ff2d6f transparent transparent transparent;
+    border-radius: 15px 15px 0 0;
+    transition: transform 1s ease;
+    transform-origin: top center;
+  }
+
+  /* Open flap */
+  #envelope.open .flap {
+    transform: rotateX(180deg);
+  }
+
+  /* Letter inside envelope */
+  #letter-content {
+    background: #fff0f6;
+    margin: 0 15px;
+    padding: 1rem;
+    color: #d6336c;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 0 0 15px 15px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease 1s, transform 1s ease 1s;
+    min-height: 90px;
+    line-height: 1.4;
+  }
+
+  /* Show letter content when open */
+  #envelope.open #letter-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Happy Bday animation container */
+  #happyBday {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    color: #d6336c;
+    opacity: 0;
+    animation: pulse 1.5s infinite ease-in-out;
+    transition: opacity 1s ease;
+  }
+
+  /* Show happy bday text */
+  #happyBday.show {
+    opacity: 1;
+  }
+
+  /* Pulse animation for happy bday */
+  @keyframes pulse {
+    0%, 100% {
+      color: #d6336c;
+      text-shadow: 0 0 5px #ff5c8d, 0 0 10px #ff8db3;
+    }
+    50% {
+      color: #ff8db3;
+      text-shadow: 0 0 15px #d6336c, 0 0 25px #ff5c8d;
+    }
+  }
+
+  /* Name text styling */
+  #nameText {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    color: #b3365c;
+    opacity: 0;
+    transition: opacity 1s ease 0.5s;
+    font-weight: bold;
+  }
+
+  #nameText.show {
+    opacity: 1;
+  }
+
+  /* Button styling */
+  #soundButton {
+    margin-top: 2rem;
+    background-color: #ff5c8d;
+    border: none;
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 5px 0 #b43a57;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+
+  #soundButton:hover:not(:disabled) {
+    background-color: #ff4081;
+  }
+
+  #soundButton:disabled {
+    background-color: #f5a2be;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* Navigation link */
+  #nav {
+    margin-top: 3rem;
+  }
+  #nav a {
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #d6336c;
+    border: 2px solid #d6336c;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  #nav a:hover {
+    background-color: #d6336c;
+    color: white;
+  }
+</style>
+</head>
+<body>
+  <div id="container">
+    <h1>Open Your Letter</h1>
+    <div id="envelope" role="button" aria-pressed="false" aria-label="Envelope letter, click to open">
+      <div class="flap"></div>
+      <div id="letter-content">Happy Bday!<br>Farah Allisyah Firanti^^</div>
+    </div>
+    <div id="happyBday" aria-live="polite" aria-atomic="true" role="text">
+      Happy Bday!^^
+    </div>
+    <div id="nameText">Farah Allisyah Firanti^^</div>
+    <button id="soundButton" disabled>Play Sound</button>
+    <div id="nav">
+      <a href="video.html">Go to Video Page &gt;</a>
+    </div>
+  </div>
+
+<script>
+  const envelope = document.getElementById('envelope');
+  const happyBday = document.getElementById('happyBday');
+  const nameText = document.getElementById('nameText');
+  const soundButton = document.getElementById('soundButton');
+
+  // Initially hide happyBday and nameText
+  happyBday.style.opacity = '0';
+  nameText.style.opacity = '0';
+
+  envelope.addEventListener('click', () => {
+    if (!envelope.classList.contains('open')) {
+      envelope.classList.add('open');
+      envelope.setAttribute('aria-pressed', 'true');
+
+      // After animation of flap open (1s), show happy bday and name text
+      setTimeout(() => {
+        happyBday.classList.add('show');
+        nameText.classList.add('show');
+        // Enable the sound button
+        soundButton.disabled = false;
+      }, 1000);
+    }
+  });
+
+  soundButton.addEventListener('click', () => {
+    const message = "Next time we go to the movies date";
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(message);
+      utterance.lang = 'en-US';
+      speechSynthesis.speak(utterance);
+    } else {
+      alert("Sorry, your browser doesn't support speech synthesis.");
+    }
+  });
+</script>
+</body>
+</html>
